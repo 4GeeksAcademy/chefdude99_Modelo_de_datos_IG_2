@@ -48,6 +48,12 @@ class Media(db.Model):
     
     publicacion: Mapped['Publicacion'] = relationship(back_populates='media')
 
+class Seguidores(db.Model):
+    id: Mapped[int] = mapped_column(primary_key=True)
+    usuario_del_id: Mapped[int] = mapped_column(ForeignKey('usuario.id'))
+    usuario_al_id: Mapped[int] = mapped_column(ForeignKey('usuario.id'))
+
+
 
     def serialize(self):
         return {
